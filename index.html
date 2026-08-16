@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La casa delle essenze — Archivio I</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="stars"></div>
+
+    <div class="moon">
+        ☾
+    </div>
+
+    <div class="desert"></div>
+
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
+
+    <main class="archive-container">
+
+        <!-- HEADER -->
+
+        <header class="archive-header">
+
+            <div class="arabic-small">
+                بيت الجواهر
+            </div>
+
+            <h1>
+                CASA DELLE ESSENZE
+            </h1>
+
+            <div class="ornament">
+                ──────── ✦ ────────
+            </div>
+
+            <p class="archive-number">
+                ARCHIVIO I
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             LOCKED SCREEN
+        ========================== -->
+
+        <section id="lockedScreen" class="screen active">
+
+            <div class="lock-symbol">
+                ◈
+            </div>
+
+            <h2>
+                LA PRIMA PORTA
+            </h2>
+
+            <p class="subtitle">
+                ARCHIVIO BLOCCATO
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="instruction">
+                La prima porta non si apre con un nome.
+            </p>
+
+            <p class="instruction">
+                Cerca ciò che rende una persona ciò che è.
+            </p>
+
+
+            <div class="password-area">
+
+                <label for="essenceInput">
+                    INSERISCI LA PRIMA ESSENZA
+                </label>
+
+                <input id="essenceInput" type="text" autocomplete="off" spellcheck="false" placeholder="...">
+
+                <button id="enterButton">
+                    INVIO
+                </button>
+
+            </div>
+
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </section>
+
+
+        <!-- =========================
+             UNLOCK ANIMATION
+        ========================== -->
+
+        <section id="unlockScreen" class="screen">
+
+            <div class="unlock-symbol">
+                ✦
+            </div>
+
+            <p class="unlock-small">
+                ESSENZA RICONOSCIUTA
+            </p>
+
+            <div class="arabic-large">
+                الفضول
+            </div>
+
+            <h2>
+                AL-FUDŪL
+            </h2>
+
+            <p class="translation">
+                CURIOSITÀ
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="unlock-message">
+                ARCHIVIO I E' STATO RECUPERATO
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FRAGMENT 01
+        ========================== -->
+
+        <section id="fragmentScreen" class="screen">
+
+            <div class="fragment-header">
+
+                <span>
+                    FRAMMENTO 01
+                </span>
+
+                <span>
+                    1 / 7
+                </span>
+
+            </div>
+
+
+            <div class="fragment-symbol">
+                ✦
+            </div>
+
+
+            <h2>
+                LA CURIOSITÀ
+            </h2>
+
+
+            <div class="fragment-text">
+
+                <p>
+                    Ti sei mai chiesta perché ti fermi davanti
+                    a qualcosa che gli altri continuano a ignorare?
+                </p>
+
+                <p>
+                    Un fiore da annusare.
+                </p>
+
+                <p>
+                    Un gatto incontrato per strada.
+                </p>
+
+                <p>
+                    Una lingua che non conosci.
+                </p>
+
+                <p>
+                    Una reazione chimica che vuoi capire.
+                </p>
+
+                <p>
+                    Un tramonto che non aveva nessun motivo
+                    di aspettarti.
+                </p>
+
+                <p class="highlight">
+                    Forse la curiosità non è il desiderio
+                    di sapere tutto.
+                </p>
+
+                <p class="highlight">
+                    È il desiderio di non lasciare
+                    una cosa sconosciuta.
+                </p>
+
+            </div>
+
+
+            <div class="paw-section">
+
+                <div class="paw">
+                    🐾
+                </div>
+
+                <p>
+                    Hai trovato ciò che cercavi.
+                </p>
+
+                <p>
+                    Ma hai lasciato qualcosa indietro.
+                </p>
+
+                <div class="paw-line">
+                    ─────────
+                </div>
+
+                <p class="small-message">
+                    Non tutto ciò che trovi
+                    deve servirti subito.
+                </p>
+
+            </div>
+
+
+            <div class="fragment-footer">
+
+                <span>
+                    ARCHIVIO I
+                </span>
+
+                <span>
+                    RECUPERATO
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
