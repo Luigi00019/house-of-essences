@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La casa delle essenze — Archivio II</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="stars"></div>
+
+    <div class="moon">
+        ☾
+    </div>
+
+    <div class="desert"></div>
+
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
+
+    <main class="archive-container">
+
+        <!-- HEADER -->
+
+        <header class="archive-header">
+
+            <div class="arabic-small">
+                بيت الجواهر
+            </div>
+
+            <h1>
+                CASA DELLE ESSENZE
+            </h1>
+
+            <div class="ornament">
+                ──────── ✦ ────────
+            </div>
+
+            <p class="archive-number">
+                ARCHIVIO II
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             LOCKED SCREEN
+        ========================== -->
+
+        <section id="lockedScreen" class="screen active">
+
+            <div class="lock-symbol">
+                ◈
+            </div>
+
+            <h2>
+                LA SECONDA PORTA
+            </h2>
+
+            <p class="subtitle">
+                ARCHIVIO BLOCCATO
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="instruction">
+                Sette parole ti sono state consegnate.
+            </p>
+
+            <p class="instruction">
+                Sei di esse mostrano un segno. Una sola le nomina tutte.
+            </p>
+
+
+            <div class="password-area">
+
+                <label for="essenceInput">
+                    INSERISCI LA SECONDA ESSENZA
+                </label>
+
+                <input id="essenceInput" type="text" autocomplete="off" spellcheck="false" placeholder="...">
+
+                <button id="enterButton">
+                    INVIO
+                </button>
+
+            </div>
+
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </section>
+
+
+        <!-- =========================
+             UNLOCK ANIMATION
+        ========================== -->
+
+        <section id="unlockScreen" class="screen">
+
+            <div class="unlock-symbol">
+                ✦
+            </div>
+
+            <p class="unlock-small">
+                ESSENZA RICONOSCIUTA
+            </p>
+
+            <div class="arabic-large">
+                اللطف
+            </div>
+
+            <h2>
+                AL-LUTF
+            </h2>
+
+            <p class="translation">
+                GENTILEZZA
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="unlock-message">
+                ARCHIVIO II E' STATO RECUPERATO
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FRAGMENT 02
+        ========================== -->
+
+        <section id="fragmentScreen" class="screen">
+
+            <div class="fragment-header">
+
+                <span>
+                    FRAMMENTO 02
+                </span>
+
+                <span>
+                    2 / 7
+                </span>
+
+            </div>
+
+
+            <div class="fragment-symbol">
+                ✦
+            </div>
+
+
+            <h2>
+                LA GENTILEZZA
+            </h2>
+
+
+            <div class="fragment-text">
+
+                <p>
+                    C'è un modo di guardare le cose piccole
+                    che nessuno ti ha insegnato.
+                </p>
+
+                <p>
+                    Una gatta incontrata per strada,
+                    fermata solo per uno sguardo.
+                </p>
+
+                <p>
+                    Una carezza data senza chiedere nulla
+                    in cambio.
+                </p>
+
+                <p>
+                    Un fiore annusato piano,
+                    come se avesse qualcosa da dire.
+                </p>
+
+                <p>
+                    Una cura che non si vede,
+                    ma si sente.
+                </p>
+
+                <p class="highlight">
+                    Forse la gentilezza non è un gesto.
+                </p>
+
+                <p class="highlight">
+                    È il modo in cui scegli di guardare
+                    ciò che incontri.
+                </p>
+
+            </div>
+
+
+            <div class="paw-section">
+
+                <div class="paw">
+                    🐾
+                </div>
+
+                <p>
+                    Anche chi sembra distante, dentro,
+                    non lo è mai davvero.
+                </p>
+
+                <p>
+                    La seconda essenza è custodita.
+                </p>
+
+                <div class="paw-line">
+                    ─────────
+                </div>
+
+                <p class="small-message">
+                    Due frammenti non bastano ancora
+                    a raccontare una storia.
+                </p>
+
+            </div>
+
+
+            <div class="fragment-footer">
+
+                <span>
+                    ARCHIVIO II
+                </span>
+
+                <span>
+                    RECUPERATO
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
