@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La casa delle essenze — Archivio III</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="stars"></div>
+
+    <div class="moon">
+        ☾
+    </div>
+
+    <div class="desert"></div>
+
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
+
+    <main class="archive-container">
+
+        <!-- HEADER -->
+
+        <header class="archive-header">
+
+            <div class="arabic-small">
+                بيت الجواهر
+            </div>
+
+            <h1>
+                CASA DELLE ESSENZE
+            </h1>
+
+            <div class="ornament">
+                ──────── ✦ ────────
+            </div>
+
+            <p class="archive-number">
+                ARCHIVIO III
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             LOCKED SCREEN
+        ========================== -->
+
+        <section id="lockedScreen" class="screen active">
+
+            <div class="lock-symbol">
+                ◈
+            </div>
+
+            <h2>
+                LA TERZA PORTA
+            </h2>
+
+            <p class="subtitle">
+                ARCHIVIO BLOCCATO
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="instruction">
+                Questa essenza non si racconta.
+            </p>
+
+            <p class="instruction">
+                Si costruisce, un frammento alla volta, con le tue mani.
+            </p>
+
+
+            <div class="password-area">
+
+                <label for="essenceInput">
+                    INSERISCI LA TERZA ESSENZA
+                </label>
+
+                <input id="essenceInput" type="text" autocomplete="off" spellcheck="false" placeholder="...">
+
+                <button id="enterButton">
+                    INVIO
+                </button>
+
+            </div>
+
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </section>
+
+
+        <!-- =========================
+             UNLOCK ANIMATION
+        ========================== -->
+
+        <section id="unlockScreen" class="screen">
+
+            <div class="unlock-symbol">
+                ✦
+            </div>
+
+            <p class="unlock-small">
+                ESSENZA RICONOSCIUTA
+            </p>
+
+            <div class="arabic-large">
+                الإبداع
+            </div>
+
+            <h2>
+                AL-IBDĀʿ
+            </h2>
+
+            <p class="translation">
+                CREATIVITÀ
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="unlock-message">
+                ARCHIVIO III E' STATO RECUPERATO
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FRAGMENT 03
+        ========================== -->
+
+        <section id="fragmentScreen" class="screen">
+
+            <div class="fragment-header">
+
+                <span>
+                    FRAMMENTO 03
+                </span>
+
+                <span>
+                    3 / 7
+                </span>
+
+            </div>
+
+
+            <div class="fragment-symbol">
+                ✦
+            </div>
+
+
+            <h2>
+                LA CREATIVITÀ
+            </h2>
+
+
+            <div class="fragment-text">
+
+                <p>
+                    C'è chi guarda una tela vuota e vede solo vuoto.
+                </p>
+
+                <p>
+                    Tu vedi qualcosa che ancora non esiste,
+                    e decidi di farlo esistere.
+                </p>
+
+                <p>
+                    Un colore scelto senza motivo,
+                    solo perché quello e non un altro.
+                </p>
+
+                <p>
+                    Una forma nata dalle tue mani,
+                    piccola, imperfetta, tua.
+                </p>
+
+                <p>
+                    Un fiore disegnato un petalo alla volta,
+                    senza sapere ancora com'era il disegno intero.
+                </p>
+
+                <p class="highlight">
+                    Forse la creatività non è saper fare qualcosa
+                    di bello.
+                </p>
+
+                <p class="highlight">
+                    È il coraggio di iniziare senza
+                    sapere come finirà.
+                </p>
+
+            </div>
+
+
+            <div class="paw-section">
+
+                <div class="paw">
+                    🌸
+                </div>
+
+                <p>
+                    Hai appena creato qualcosa che prima
+                    non esisteva.
+                </p>
+
+                <p>
+                    La terza essenza è custodita.
+                </p>
+
+                <div class="paw-line">
+                    ─────────
+                </div>
+
+                <p class="small-message">
+                    Tre frammenti iniziano a somigliare
+                    a un disegno più grande.
+                </p>
+
+            </div>
+
+
+            <div class="fragment-footer">
+
+                <span>
+                    ARCHIVIO III
+                </span>
+
+                <span>
+                    RECUPERATO
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
