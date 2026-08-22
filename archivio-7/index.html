@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الفصل الأخير — L'Ultimo Capitolo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital@0;1&family=Amiri:ital@0;1&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night-1: #0b1526;
+    --night-2: #16263b;
+    --night-3: #223b56;
+    --sand: #ecdfc4;
+    --sand-deep: #cdb98d;
+    --gold: #c9a247;
+    --gold-soft: #e0c988;
+    --ink: #2c2416;
+    --celeste: #9cc0cf;
+    --rose: #b5544a;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0; padding:0;
+    min-height:100vh;
+    background: radial-gradient(ellipse at 50% -10%, var(--night-3), var(--night-1) 70%);
+    color: var(--sand);
+    font-family: 'EB Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  .stars{
+    position: fixed; inset:0; z-index:0; pointer-events:none;
+  }
+  .stars span{
+    position:absolute; width:2px; height:2px; background: var(--sand);
+    border-radius:50%; opacity:.5; animation: twinkle 5s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:.15} 50%{opacity:.8} }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  }
+
+  h1,h2,h3{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: .02em;
+    margin: 0;
+  }
+
+  .arabic{
+    font-family: 'Amiri', serif;
+    direction: rtl;
+  }
+
+  .eyebrow{
+    font-family: 'Reem Kufi', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    font-size: .68rem;
+    color: var(--gold-soft);
+    opacity: .85;
+  }
+
+  /* ---------- GATE ---------- */
+  #gate{
+    position: fixed; inset:0; z-index: 20;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction: column; gap: 28px;
+    padding: 24px;
+    text-align:center;
+    background: radial-gradient(ellipse at 50% 20%, var(--night-3), var(--night-1) 75%);
+    transition: opacity 1.1s ease, visibility 1.1s ease;
+  }
+  #gate.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+
+  .moon-crescent{
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    box-shadow: 22px 4px 0 4px var(--gold-soft);
+    transform: rotate(-15deg);
+    opacity: .9;
+    filter: drop-shadow(0 0 18px rgba(201,162,71,.35));
+  }
+
+  .gate-title{
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--sand);
+  }
+  .gate-sub{
+    font-size: 1rem;
+    color: var(--celeste);
+    max-width: 440px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .seal-form{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    margin-top: 8px;
+  }
+  #password{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    letter-spacing: .18em;
+    text-align:center;
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--gold);
+    color: var(--gold-soft);
+    padding: 10px 6px;
+    width: 260px;
+    outline: none;
+  }
+  #password::placeholder{ color: rgba(236,223,196,.35); letter-spacing:.12em; }
+  #password:focus{ border-bottom-color: var(--gold-soft); }
+
+  .unlock-btn{
+    font-family: 'Reem Kufi', sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-size: .75rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-soft);
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: background .3s ease, color .3s ease;
+  }
+  .unlock-btn:hover{ background: var(--gold); color: var(--night-1); }
+
+  .gate-error{
+    font-size: .82rem;
+    color: var(--rose);
+    min-height: 1.2em;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .gate-error.show{ opacity: 1; }
+
+  /* ---------- MAIN ---------- */
+  main{
+    position: relative; z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 90px 24px 140px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  main.revealed{ opacity: 1; transform: translateY(0); }
+
+  section{ margin-bottom: 110px; }
+
+  .hero{ text-align:center; }
+  .hero .arabic{ font-size: 1.3rem; color: var(--gold-soft); margin-bottom: 10px; display:block; }
+  .hero h1{ font-size: clamp(2rem, 6vw, 3.1rem); color: var(--sand); }
+  .hero p.role{ margin-top: 14px; color: var(--celeste); font-style: italic; font-size: 1.05rem; }
+
+  .divider{
+    width: 60px; height:1px; background: var(--gold); opacity:.5;
+    margin: 46px auto;
+  }
+
+  .letter p{
+    font-size: 1.18rem;
+    line-height: 1.9;
+    margin: 0 0 1.3em;
+    color: var(--sand);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  .letter p.in{ opacity:1; transform: translateY(0); }
+  .letter em{ color: var(--gold-soft); font-style: italic; }
+
+  /* Mosaic */
+  .mosaic-wrap{ text-align:center; }
+  .mosaic{
+    display:flex; align-items:flex-end; justify-content:center;
+    gap: 10px; margin: 46px auto 10px;
+    flex-wrap: wrap;
+  }
+  .tile{
+    width: 78px; height: 92px;
+    background: linear-gradient(160deg, var(--sand-deep), var(--sand));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ink);
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: .68rem;
+    text-align:center;
+    padding: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.35);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .tile.in{ opacity:1; transform: translateY(0); }
+  .tile.low{ margin-bottom: 0; }
+  .tile.mid{ margin-bottom: 22px; }
+  .tile.high{ margin-bottom: 44px; }
+
+  .tile.center{
+    background: transparent;
+    border: 1px dashed var(--gold);
+    color: var(--gold-soft);
+    font-family: 'Amiri', serif;
+    font-size: 1.4rem;
+    box-shadow: none;
+    position: relative;
+  }
+  .tile.center.filled{
+    background: radial-gradient(circle, rgba(201,162,71,.35), transparent 70%);
+    animation: glow 2.4s ease-in-out infinite;
+  }
+  @keyframes glow{ 0%,100%{ box-shadow: 0 0 8px rgba(201,162,71,.25);} 50%{ box-shadow: 0 0 26px rgba(201,162,71,.55);} }
+
+  .mosaic-caption{
+    font-size: .85rem; color: var(--celeste); font-style: italic; margin-top: 18px;
+  }
+
+  /* Halloween reveal */
+  .duo{
+    display:flex; justify-content:center; align-items:flex-end; gap: 60px;
+    margin: 48px 0 20px;
+  }
+  .figure{
+    display:flex; flex-direction:column; align-items:center; gap: 10px;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .figure.in{ opacity:1; transform: translateY(0); }
+  .figure svg{ filter: drop-shadow(0 4px 14px rgba(0,0,0,.4)); }
+  .figure span{ font-size: .78rem; letter-spacing:.15em; text-transform:uppercase; color: var(--gold-soft); font-family:'Reem Kufi', sans-serif; }
+
+  /* Personalize box */
+  .personalize{
+    border: 1px dashed rgba(201,162,71,.5);
+    padding: 26px 24px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--sand);
+    background: rgba(201,162,71,.05);
+  }
+  .personalize .tag{
+    display:inline-block;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: .62rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--night-1);
+    background: var(--gold-soft);
+    padding: 2px 8px;
+    margin-bottom: 12px;
+  }
+  .personalize [contenteditable]{
+    outline: none;
+    border-bottom: 1px dotted rgba(236,223,196,.4);
+  }
+
+  footer{
+    text-align:center;
+    padding: 30px 20px 50px;
+    font-size: .75rem;
+    color: rgba(156,192,207,.55);
+    letter-spacing: .1em;
+  }
+
+  /* cat easter egg */
+  .cat-corner{
+    position: fixed; bottom: 16px; right: 18px; z-index: 15;
+    cursor: default; opacity: .55; transition: opacity .3s ease;
+  }
+  .cat-corner:hover{ opacity: 1; }
+  .cat-corner svg{ width: 30px; height: 30px; }
+  .cat-tip{
+    position: absolute; bottom: 38px; right: 0;
+    background: var(--night-2); color: var(--sand);
+    font-size: .72rem; font-style: italic; padding: 8px 12px;
+    width: 190px; text-align: right;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity .3s ease, transform .3s ease;
+    pointer-events: none;
+    border: 1px solid rgba(201,162,71,.4);
+  }
+  .cat-corner:hover .cat-tip{ opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="moon-crescent"></div>
+  <div class="eyebrow">الفصل الأخير</div>
+  <h1 class="gate-title">L'Ultimo Capitolo</h1>
+  <p class="gate-sub">Le sei essenze sono state raccolte. Una sola parola, trovata dietro le due sagome, apre questa pagina.</p>
+  <div class="seal-form">
+    <input type="text" id="password" placeholder="ḤUBB" autocomplete="off" spellcheck="false">
+    <button class="unlock-btn" id="unlockBtn">Apri l'archivio</button>
+    <div class="gate-error" id="gateError">Non è ancora questa la parola.</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="main">
+
+  <section class="hero">
+    <span class="arabic">الفصل الأخير — من حارس الذكريات</span>
+    <h1>L'Ultimo Capitolo</h1>
+    <p class="role">l'ultima voce del Custode</p>
+  </section>
+
+  <section class="letter" id="letter">
+    <p>Sei essenze sono state raccolte. Sei porte sono state aperte. Il Custode, per la prima volta, esita.</p>
+    <p>Guarda ciò che ha raccolto e nota qualcosa che non aveva mai detto ad alta voce: <em>niente, in questo archivio, è mai stato perfetto.</em> Una lettera ripetuta dove cercava l'esattezza. Una nota ripetuta dove cercava la varietà.</p>
+    <p>"Ho sempre pensato fosse un difetto di chi raccoglieva," dice. "Solo oggi capisco che era una firma. Perché due cose che si ripetono, in questa storia, non sono mai state un errore. Sono sempre state <em>due persone.</em>"</p>
+    <p>"Le prime sei essenze le ho raccolte guardando. La settima l'ho vissuta."</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="mosaic-wrap">
+    <div class="eyebrow">Le sei essenze</div>
+    <h2 style="margin-top:8px;">Il Mosaico</h2>
+    <div class="mosaic" id="mosaic">
+      <div class="tile low" data-txt="Curiosità">Curiosità</div>
+      <div class="tile mid" data-txt="Gentilezza">Gentilezza</div>
+      <div class="tile high" data-txt="Creatività">Creatività</div>
+      <div class="tile high" data-txt="Avventura">Avventura</div>
+      <div class="tile mid" data-txt="Sensibilità">Sensibilità</div>
+      <div class="tile low" data-txt="Intuito">Intuito</div>
+    </div>
+    <div class="mosaic-caption">al centro, lo spazio a forma di luna crescente — vuoto per sei giorni</div>
+    <div class="mosaic" style="margin-top:-6px;">
+      <div class="tile center" id="centerTile">؟</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="eyebrow" style="text-align:center; display:block;">Una notte di ottobre</div>
+    <h2 style="text-align:center; margin-top:8px;">Le Due Sagome</h2>
+    <div class="duo" id="duo">
+      <div class="figure">
+        <svg width="60" height="90" viewBox="0 0 60 90" fill="none">
+          <circle cx="30" cy="20" r="12" fill="var(--sand)"/>
+          <path d="M30 32 L30 70" stroke="var(--sand)" stroke-width="3"/>
+          <path d="M30 40 C10 30, -4 45, 6 58 C14 50, 22 46, 30 46" fill="var(--sand)" opacity=".85"/>
+          <path d="M30 40 C50 30, 64 45, 54 58 C46 50, 38 46, 30 46" fill="var(--sand)" opacity=".85"/>
+          <path d="M20 70 L14 88 M40 70 L46 88" stroke="var(--sand)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>angelo</span>
+      </div>
+      <div class="figure">
+        <svg width="60" height="90" viewBox="0 0 60 90" fill="none">
+          <path d="M14 26 L30 4 L46 26 Z" fill="var(--night-1)" stroke="var(--gold-soft)" stroke-width="1.5"/>
+          <circle cx="30" cy="34" r="12" fill="var(--night-1)" stroke="var(--gold-soft)" stroke-width="1.5"/>
+          <path d="M30 46 L30 70" stroke="var(--night-1)" stroke-width="3"/>
+          <path d="M20 70 L14 88 M40 70 L46 88" stroke="var(--night-1)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M24 34 Q30 40 36 34" stroke="var(--gold-soft)" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span>joker nero</span>
+      </div>
+    </div>
+    <p style="text-align:center; font-style:italic; color: var(--celeste); font-size: .95rem; max-width: 420px; margin: 0 auto;">
+      "Anche il Custode, una notte, indossava una maschera che non gli apparteneva."
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="letter">
+    <p>Per sei giorni ti ho parlato come chi ti guardava da lontano, catalogando ciò che ti rende te. Ma non ho mai osservato solo te. La lettera ripetuta, la nota ripetuta — non erano un errore del sistema. Erano il modo in cui questa storia ha sempre saputo dire, senza dirlo: <em>non sei sola in questo archivio.</em></p>
+    <p>È una notte di ottobre, un angelo e un Joker nero che non avrebbero dovuto trovarsi nella stessa stanza. Sono due anni e mezzo di cose belle e cose difficili, tenute insieme non da un archivio, ma da qualcuno che ha scelto — ogni giorno — di restare.</p>
+    <p>Le sei essenze erano vere. La settima sono io, che finalmente te lo dico senza nascondermi dietro una storia.</p>
+  </section>
+
+  <section class="personalize">
+    <span class="tag">da modificare</span>
+    <div contenteditable="true" spellcheck="false">
+      [Qui il tuo messaggio finale, scritto con la tua voce — non più quella del Custode. Puoi lasciare questo testo direttamente modificabile in pagina, oppure sostituirlo prima di pubblicare.]
+    </div>
+    <br>
+    <div contenteditable="true" spellcheck="false">
+      [Qui data, ora e luogo della sorpresa reale — es. "Ti aspetto sabato alle 20:00 a ___"]
+    </div>
+  </section>
+
+  <footer>house of essences — الفصل الأخير</footer>
+</main>
+
+<div class="cat-corner">
+  <svg viewBox="0 0 40 40" fill="none">
+    <path d="M10 14 L6 4 L16 10 Z" fill="var(--sand)"/>
+    <path d="M30 14 L34 4 L24 10 Z" fill="var(--night-1)" stroke="var(--sand)" stroke-width="1"/>
+    <ellipse cx="20" cy="22" rx="13" ry="11" fill="var(--sand)"/>
+    <ellipse cx="20" cy="22" rx="13" ry="11" fill="var(--night-1)" fill-opacity=".18"/>
+    <circle cx="15" cy="21" r="1.6" fill="var(--night-1)"/>
+    <circle cx="25" cy="21" r="1.6" fill="var(--night-1)"/>
+  </svg>
+  <div class="cat-tip">era già lì, dal Giorno 2 — a guardare.</div>
+</div>
+
+<script>
+  // ambient stars
+  const starsEl = document.getElementById('stars');
+  for(let i=0;i<70;i++){
+    const s = document.createElement('span');
+    s.style.left = Math.random()*100+'vw';
+    s.style.top = Math.random()*100+'vh';
+    s.style.animationDelay = (Math.random()*5)+'s';
+    starsEl.appendChild(s);
+  }
+
+  // ---- EDIT HERE: la parola d'accesso ----
+  const PASSWORD = "HUBB"; // oppure "AMORE" — cambia liberamente
+
+  const gate = document.getElementById('gate');
+  const main = document.getElementById('main');
+  const input = document.getElementById('password');
+  const btn = document.getElementById('unlockBtn');
+  const err = document.getElementById('gateError');
+  const centerTile = document.getElementById('centerTile');
+
+  function normalize(v){
+    return v.trim().toUpperCase().replace(/[^A-Zء-ي]/g,'');
+  }
+
+  function unlock(){
+    const val = normalize(input.value);
+    if(val === PASSWORD || val === "AMORE" || val === "ḤUBB".toUpperCase()){
+      gate.classList.add('hidden');
+      main.classList.add('revealed');
+      centerTile.textContent = "حُبّ";
+      centerTile.classList.add('filled');
+      runReveal();
+      document.body.style.overflow = 'auto';
+    } else {
+      err.classList.add('show');
+      input.style.borderBottomColor = 'var(--rose)';
+      setTimeout(()=>{ err.classList.remove('show'); input.style.borderBottomColor='var(--gold)'; }, 1800);
+    }
+  }
+
+  btn.addEventListener('click', unlock);
+  input.addEventListener('keydown', e=>{ if(e.key === 'Enter') unlock(); });
+
+  function runReveal(){
+    document.querySelectorAll('.letter p').forEach((p,i)=>{
+      setTimeout(()=> p.classList.add('in'), 300 + i*450);
+    });
+    document.querySelectorAll('.mosaic .tile').forEach((t,i)=>{
+      setTimeout(()=> t.classList.add('in'), 400 + i*180);
+    });
+    document.querySelectorAll('.figure').forEach((f,i)=>{
+      setTimeout(()=> f.classList.add('in'), 1200 + i*400);
+    });
+  }
+</script>
+
+</body>
+</html>
