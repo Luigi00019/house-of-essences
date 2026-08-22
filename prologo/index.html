@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminale — Accesso Richiesto</title>
+    <!-- 
+    ========================================================
+    LOG DI SISTEMA - NON CANCELLARE
+    TRACCIA RESIDUA: 31.10
+    OGGETTO_01: "Felis catus" [BIANCO/NERO] - IGNORARE
+    OGGETTO_02: Frequenza d'onda: 432Hz - [DO-MI-SOL]
+    TENTATIVI DI ACCESSO PRECEDENTI: FALLITI
+    ========================================================
+    -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Cinzel:wght@400;700&display=swap');
+        
+        body {
+            background-color: #030508;
+            color: #d4d4d4;
+            font-family: 'Courier Prime', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .stage {
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            max-width: 600px;
+            padding: 20px;
+        }
+        
+        .active {
+            display: block;
+            opacity: 1;
+        }
+        
+        h1 {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            color: #5a6b7c;
+        }
+        
+        .glitch {
+            color: #b89047;
+            font-size: 2rem;
+            letter-spacing: 15px;
+            margin-bottom: 30px;
+        }
+        
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #5a6b7c;
+            color: #b89047;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px;
+            width: 80%;
+            text-transform: uppercase;
+            outline: none;
+            letter-spacing: 3px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: transparent;
+            border: 1px solid #5a6b7c;
+            color: #5a6b7c;
+            font-family: 'Courier Prime', monospace;
+            padding: 10px 25px;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 2px;
+        }
+        
+        button:hover {
+            border-color: #b89047;
+            color: #b89047;
+        }
+        
+        .error {
+            color: #8b2b2b;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            min-height: 20px;
+        }
+        
+        .arabic {
+            font-size: 2.5rem;
+            letter-spacing: 20px;
+            margin: 30px 0;
+            color: #eaddcd;
+        }
+        
+        /* Stili per il finale */
+        .finale-text {
+            font-family: 'Cinzel', serif;
+            color: #b89047;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+        .finale-sub {
+            color: #5a6b7c;
+            font-size: 1rem;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STAGE 1: IL CANCELLO -->
+    <div id="stage1" class="stage active">
+        <div class="glitch">░░ 07 ░░</div>
+        <div id="intro-ui" style="display: none;">
+            <p style="color: #5a6b7c; font-size: 0.9rem;">IDENTITÀ NON RICONOSCIUTA.<br>Non inserire il tuo nome.<br>Dimostra chi sei.</p>
+            <input type="text" id="input1" autocomplete="off">
+        </div>
+        <button id="btn1" onclick="handleIntro()">[ APRI ]</button>
+        <div id="err1" class="error"></div>
+    </div>
+
+    <!-- STAGE 2: LA MATERIA -->
+    <div id="stage2" class="stage">
+        <h1>LIVELLO I</h1>
+        <p style="letter-spacing: 8px; font-size: 1.5rem; color:#eaddcd;">O Fe N Ca C H S</p>
+        <p style="font-size: 0.9rem; margin-top:30px;">Non cercare i nomi.<br>Cerca ciò che li rende ciò che sono.</p>
+        <input type="text" id="input2" autocomplete="off" placeholder="...">
+        <br>
+        <button onclick="handleStage2()">VERIFICA</button>
+        <div id="err2" class="error"></div>
+    </div>
+
+    <!-- STAGE 3: LA LINGUA -->
+    <div id="stage3" class="stage">
+        <h1>LIVELLO II</h1>
+        <div class="arabic">ا ل م ك ا ن</div>
+        <p style="font-size: 0.9rem;">Una lingua può nascondere ciò che un'altra rivela.<br>Non leggere da sinistra.</p>
+        <input type="text" id="input3" autocomplete="off" placeholder="...">
+        <br>
+        <button onclick="handleStage3()">DECODIFICA</button>
+        <div id="err3" class="error"></div>
+    </div>
+
+    <!-- STAGE 4: LA SCELTA -->
+    <div id="stage4" class="stage">
+        <h1>SISTEMA CENTRALE</h1>
+        <p style="font-size: 1rem; color:#eaddcd;">Dove vengono conservate le cose<br>che non devono essere dimenticate?</p>
+        <p style="font-size: 0.8rem; color:#5a6b7c; margin-bottom: 40px;">Non puoi aprirmi senza sapere cosa custodisco.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <button onclick="finalChoice('tempio')" style="width: 250px;">TEMPIO DELLE ESSENZE</button>
+            <button onclick="finalChoice('casa')" style="width: 250px;">CASA DELLE ESSENZE</button>
+            <button onclick="finalChoice('archivio')" style="width: 250px;">ARCHIVIO DELLE ESSENZE</button>
+        </div>
+        <div id="err4" class="error" style="margin-top: 30px;"></div>
+    </div>
+
+    <!-- STAGE 5: IL FINALE -->
+    <div id="stage5" class="stage">
+        <div class="finale-text">CASA DELLE ESSENZE</div>
+        <div class="finale-text" style="font-size: 1.2rem;">بَيْتُ الجَوَاهِر</div>
+        <br><br>
+        <div class="finale-sub">
+            <span style="color: #4CAF50;">ACCESSO CONCESSO</span><br><br>
+            ARCHIVIO RIATTIVATO<br>
+            ULTIMO ACCESSO: 31 / 10 / XXXX<br>
+            STATO: INATTIVO<br><br>
+            NUOVO CUSTODE RICONOSCIUTO.<br>
+            <span style="color: #b89047; font-size: 1.2rem; letter-spacing: 3px;">MELANIA</span>
+        </div>
+    </div>
+
+    <script>
+        let introAttempts = 0;
+
+        function transitionTo(nextStageId) {
+            const current = document.querySelector('.active');
+            current.style.opacity = 0;
+            setTimeout(() => {
+                current.classList.remove('active');
+                current.style.display = 'none';
+                
+                const next = document.getElementById(nextStageId);
+                next.style.display = 'block';
+                // Trigger reflow
+                void next.offsetWidth;
+                next.classList.add('active');
+            }, 1500);
+        }
+
+        function handleIntro() {
+            const ui = document.getElementById('intro-ui');
+            const err = document.getElementById('err1');
+            const btn = document.getElementById('btn1');
+            
+            if(ui.style.display === 'none') {
+                ui.style.display = 'block';
+                btn.innerText = "CONTINUA";
+                err.innerText = "Se sei arrivata qui, qualcuno ha già sbagliato.";
+                return;
+            }
+
+            introAttempts++;
+            if(introAttempts >= 3) {
+                err.innerText = "Non ti sto chiedendo chi sei. Ti sto chiedendo come osservi.";
+                btn.style.display = 'none';
+                ui.style.display = 'none';
+                setTimeout(() => transitionTo('stage2'), 2500);
+            } else {
+                err.innerText = "Identità errata. Riprova.";
+                document.getElementById('input1').value = '';
+            }
+        }
+
+        function handleStage2() {
+            const val = document.getElementById('input2').value.trim().toUpperCase();
+            if(val === 'ORDINE' || val === 'ORDINI' || val === 'NUMERI ATOMICI' || val === 'NUMERO ATOMICO') {
+                document.getElementById('err2').style.color = '#4CAF50';
+                document.getElementById('err2').innerText = "Corretto. Ma inutile. Hai trovato la chiave, non l'ordine.";
+                setTimeout(() => transitionTo('stage3'), 2500);
+            } else {
+                document.getElementById('err2').innerText = "Un elemento non è soltanto il suo nome. Pensa alla logica della materia.";
+            }
+        }
+
+        function handleStage3() {
+            const val = document.getElementById('input3').value.trim().toUpperCase();
+            if(val === 'LUOGO' || val === 'MAKAN' || val === 'MAKĀN') {
+                document.getElementById('err3').style.color = '#4CAF50';
+                document.getElementById('err3').innerText = "Trascrizione accettata.";
+                setTimeout(() => transitionTo('stage4'), 2000);
+            } else {
+                document.getElementById('err3').innerText = "Errore di decodifica. Trova il nome arabo, poi il suo significato.";
+            }
+        }
+
+        function finalChoice(choice) {
+            const err = document.getElementById('err4');
+            if(choice === 'casa') {
+                err.style.color = '#5a6b7c';
+                err.innerText = "...";
+                setTimeout(() => transitionTo('stage5'), 2000);
+            } else {
+                err.innerText = "Sbagliato. Ricorda la prima schermata. Quante essenze sono?";
+            }
+        }
+    </script>
+</body>
+</html>
