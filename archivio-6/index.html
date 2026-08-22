@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivio del Custode - Sesto Capitolo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap');
+        
+        body {
+            background-color: #0b1325;
+            color: #eaddcd;
+            font-family: 'Lora', serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #b89047;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #8a9bb8;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .decorative-line {
+            width: 60%;
+            max-width: 300px;
+            border-bottom: 1px solid #b89047;
+            margin: 20px auto;
+        }
+        .tavola-container {
+            border: 2px solid #b89047;
+            background-color: rgba(26, 43, 76, 0.6);
+            padding: 25px 15px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 350px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .row {
+            font-size: 1.5rem;
+            margin: 12px 0;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        .letter {
+            color: #b89047;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            width: 30px;
+            text-align: right;
+        }
+        .moons {
+            letter-spacing: 4px;
+        }
+        .dots {
+            color: #b89047;
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+        .quote {
+            font-style: italic;
+            color: #8a9bb8;
+            margin: 25px 0;
+            line-height: 1.6;
+            padding: 0 15px;
+            font-size: 1.1rem;
+        }
+        .input-section {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 400px;
+            padding-bottom: 40px;
+        }
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #b89047;
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px;
+            width: 80%;
+            text-transform: uppercase;
+            outline: none;
+            letter-spacing: 2px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-bottom: 2px solid #eaddcd;
+        }
+        button {
+            background-color: transparent;
+            color: #b89047;
+            border: 1px solid #b89047;
+            padding: 12px 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #b89047;
+            color: #0b1325;
+        }
+        
+        #success-screen {
+            display: none;
+            animation: fadeIn 2s;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .essence-title {
+            font-family: 'Cinzel', serif;
+            color: #b89047;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        .essence-subtitle {
+            font-size: 1.5rem;
+            color: #eaddcd;
+            margin-bottom: 30px;
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-screen">
+        <h1>Tavola Astronomica</h1>
+        <h2>Archivio del Custode</h2>
+        <div class="decorative-line"></div>
+        
+        <div class="tavola-container">
+            <div class="row"><span class="letter">A</span> <span class="moons">⚫⚫⚫⚫⚪</span></div>
+            <div class="row"><span class="letter">B</span> <span class="moons">⚫⚫⚫⚪⚫</span></div>
+            <div class="row"><span class="letter">C</span> <span class="moons">⚫⚫⚫⚪⚪</span></div>
+            <div class="row"><span class="letter">D</span> <span class="moons">⚫⚫⚪⚫⚫</span></div>
+            <div class="dots">...</div>
+        </div>
+        
+        <div class="quote">
+            "Ciò che governa il cielo, segue sempre la logica del due.<br>
+            Continua la sequenza."
+        </div>
+        
+        <div class="input-section">
+            <p style="font-style: italic; color: #b89047; margin-bottom: 20px;">Quale dote rara ti ha permesso di decifrare il buio?</p>
+            <input type="text" id="password-input" placeholder="La tua risposta" autocomplete="off">
+            <br>
+            <button onclick="checkPassword()">SBLOCCA</button>
+            <p id="error-message" style="color: #ff6b6b; font-size: 0.9rem; display: none; margin-top: 15px;">La parola non è corretta. Osserva bene le lune.</p>
+        </div>
+    </div>
+
+    <div id="success-screen">
+        <h2 style="color: #8a9bb8; font-size: 1.2rem; margin-top:30px;">Sesta Essenza Rivelata</h2>
+        <div class="decorative-line"></div>
+        <div class="essence-title">Al-Baṣīra</div>
+        <div class="essence-subtitle">L'Intuito</div>
+        <p style="font-size: 1.2rem; line-height: 1.8; max-width: 500px; margin: 0 auto; color: #eaddcd;">
+            Non hai avuto bisogno di luce per vedere chiaro.<br>
+            Hai trovato l'ordine nell'ombra.<br><br>
+            Il sesto frammento è tuo.<br>
+            La porta per la fine del viaggio sta per aprirsi.
+        </p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('password-input').value.trim().toUpperCase();
+            const error = document.getElementById('error-message');
+            
+            if(input === 'INTUITO') {
+                document.getElementById('main-screen').style.display = 'none';
+                document.getElementById('success-screen').style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                error.style.display = 'block';
+                setTimeout(() => { error.style.display = 'none'; }, 3000);
+            }
+        }
+
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
