@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La casa delle essenze — Archivio IV</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="stars"></div>
+
+    <div class="moon">
+        ☾
+    </div>
+
+    <div class="desert"></div>
+
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
+
+    <main class="archive-container">
+
+        <!-- HEADER -->
+
+        <header class="archive-header">
+
+            <div class="arabic-small">
+                بيت الجواهر
+            </div>
+
+            <h1>
+                CASA DELLE ESSENZE
+            </h1>
+
+            <div class="ornament">
+                ──────── ✦ ────────
+            </div>
+
+            <p class="archive-number">
+                ARCHIVIO IV
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             LOCKED SCREEN
+        ========================== -->
+
+        <section id="lockedScreen" class="screen active">
+
+            <div class="lock-symbol">
+                ◈
+            </div>
+
+            <h2>
+                LA QUARTA PORTA
+            </h2>
+
+            <p class="subtitle">
+                ARCHIVIO BLOCCATO
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="instruction">
+                Non tutte le porte si aprono restando fermi.
+            </p>
+
+            <p class="instruction">
+                Questa si è aperta solo dopo che hai camminato.
+            </p>
+
+
+            <div class="password-area">
+
+                <label for="essenceInput">
+                    INSERISCI LA QUARTA ESSENZA
+                </label>
+
+                <input id="essenceInput" type="text" autocomplete="off" spellcheck="false" placeholder="...">
+
+                <button id="enterButton">
+                    INVIO
+                </button>
+
+            </div>
+
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </section>
+
+
+        <!-- =========================
+             UNLOCK ANIMATION
+        ========================== -->
+
+        <section id="unlockScreen" class="screen">
+
+            <div class="unlock-symbol">
+                ✦
+            </div>
+
+            <p class="unlock-small">
+                ESSENZA RICONOSCIUTA
+            </p>
+
+            <div class="arabic-large">
+                مغامرة
+            </div>
+
+            <h2>
+                MUGHĀMARA
+            </h2>
+
+            <p class="translation">
+                AVVENTURA
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="unlock-message">
+                ARCHIVIO IV E' STATO RECUPERATO
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FRAGMENT 04
+        ========================== -->
+
+        <section id="fragmentScreen" class="screen">
+
+            <div class="fragment-header">
+
+                <span>
+                    FRAMMENTO 04
+                </span>
+
+                <span>
+                    4 / 7
+                </span>
+
+            </div>
+
+
+            <div class="fragment-symbol">
+                ✦
+            </div>
+
+
+            <h2>
+                L'AVVENTURA
+            </h2>
+
+
+            <div class="fragment-text">
+
+                <p>
+                    C'è una parte di te che non si accontenta
+                    della strada già segnata.
+                </p>
+
+                <p>
+                    Una moto che parte più veloce di quanto
+                    servirebbe.
+                </p>
+
+                <p>
+                    Un sapore mai provato, ordinato
+                    solo per scoprirlo.
+                </p>
+
+                <p>
+                    Una direzione presa senza sapere
+                    dove porta davvero.
+                </p>
+
+                <p>
+                    Non è incoscienza.
+                </p>
+
+                <p class="highlight">
+                    È la fiducia che, qualunque cosa trovi
+                    lungo la strada, saprai affrontarla.
+                </p>
+
+                <p class="highlight">
+                    Ed è per questo che continui
+                    a cercare strade nuove.
+                </p>
+
+            </div>
+
+
+            <div class="paw-section">
+
+                <div class="paw">
+                    👣
+                </div>
+
+                <p>
+                    Hai seguito un cammino che nessuno
+                    aveva segnato per te.
+                </p>
+
+                <p>
+                    La quarta essenza è custodita.
+                </p>
+
+                <div class="paw-line">
+                    ─────────
+                </div>
+
+                <p class="small-message">
+                    Quattro frammenti, e il disegno
+                    comincia a somigliare a qualcosa.
+                </p>
+
+            </div>
+
+
+            <div class="fragment-footer">
+
+                <span>
+                    ARCHIVIO IV
+                </span>
+
+                <span>
+                    RECUPERATO
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
